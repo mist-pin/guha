@@ -426,7 +426,7 @@ function faq_func() {
   // to get the faq based on types
   async function fetch_faqs(faqGroup) {
     try {
-      const response = await fetch('http://localhost:8000/get-faqs/', {
+      const response = await fetch('/get-faqs/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
