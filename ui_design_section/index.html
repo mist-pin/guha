@@ -1,0 +1,963 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | GUHA</title>
+    <style>
+        .loading_section {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            top: 0%;
+            bottom: 0%;
+            left: 0%;
+            right: 0%;
+            z-index: 101;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading_section .loader {
+            width: 50px;
+            aspect-ratio: 1;
+            --c: linear-gradient(#bbb 0 0);
+            --m: radial-gradient(farthest-side, #bbb 92%, #0000);
+            background:
+                var(--c), var(--m),
+                var(--c), var(--m),
+                var(--c), var(--m);
+            background-size: 8px 12px, 8px 8px;
+            background-repeat: no-repeat;
+            animation: load_an 1.5s infinite linear alternate;
+        }
+
+        @keyframes load_an {
+
+            0%,
+            5% {
+                background-position: 0 50%, 0 0, 50% 50%, 50% 0, 100% 50%, 100% 0;
+            }
+
+            16.67% {
+                background-position: 0 50%, 0 calc(50% - 10px), 50% 50%, 50% 0, 100% 50%, 100% 0
+            }
+
+            33.33% {
+                background-position: 0 calc(50% + 10px), 0 50%, 50% 50%, 50% 0, 100% 50%, 100% 0
+            }
+
+            50% {
+                background-position: 0 calc(50% + 10px), 0 50%, 50% 50%, 50% calc(50% - 10px), 100% 50%, 100% 0
+            }
+
+            66.67% {
+                background-position: 0 calc(50% + 10px), 0 50%, 50% calc(50% + 10px), 50% 50%, 100% 50%, 100% 0
+            }
+
+            83.33% {
+                background-position: 0 calc(50% + 10px), 0 50%, 50% calc(50% + 10px), 50% 50%, 100% 50%, 100% calc(50% - 10px)
+            }
+
+            95%,
+            100% {
+                background-position: 0 calc(50% + 10px), 0 50%, 50% calc(50% + 10px), 50% 50%, 100% calc(50% + 10px), 100% 50%
+            }
+        }
+
+        .loader_text {
+            width: fit-content;
+            font-size: 40px;
+            line-height: 1.5;
+            font-family: system-ui, sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #0000;
+            -webkit-text-stroke: 1px #fff;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- <link rel="stylesheet" href="{% static 'css/index.css' %}"> -->
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+
+<body>
+
+
+
+    <!-- loading section start -->
+    <section class="loading_section">
+        <div class="loader"></div>
+        <div class="loader_text">Loading....</div>
+    </section>
+    <!-- loading section end -->
+
+
+
+
+
+
+
+
+
+
+    <!-- guha logo start -->
+    <div class="logo_holder">
+        <img src="./img/G.png" alt="guha" class="logo">
+    </div>
+    <!-- guha logo end -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- navigation start-->
+    <section class="navigation_section">
+        <div class="section_container">
+            <div class="container grow_here">
+            </div>
+        </div>
+    </section>
+    <!-- navigation end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- intro start -->
+    <!-- <section class="intro_section scroll_section">
+        <div class="section_container">
+            <div class="container">
+                <div class="container_1">
+                    <p class="headding grow_here">Guha Home Stay</p>
+                    <p class="sub_headdng grow_here">.</p>
+                </div>
+                <div class="container_0 grow_here">
+                    <ul>
+                        <li><a class="item" href="#"> <i class="home_icon"></i> Home</a></li>
+                        <li><a class="item" href="#"> <i class="about_icon"></i> About</a></li>
+                        <li><a class="item" href="#"> <i class="facilities_icon"></i> Facilities</a></li>
+                        <li><a class="item" href="#"> <i class="galary_icon"></i> Galary</a></li>
+                        <li><a class="item" href="#"> <i class="reviews_icon"></i> Reviews</a></li>
+                        <li><a class="item" href="#"> <i class="contact_icon"></i> Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="see_through">
+                    <picture>
+                        <source media="(max-width: 700px)" srcset="./img/see_through_mobile.svg">
+                                    <img src="{% static 'img/see_through.svg' %}" alt=""> comment missmatch
+                        <img src="./img/see_through.svg" alt="">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="intro_section_0 scroll_section">
+        <div class="see_through">
+            <picture>
+                <source media="(max-width: 700px)" srcset="./img/see_through_mobile.svg">
+                <!-- <img src="{% static 'img/see_through.svg' %}" alt=""> -->
+                <img src="./img/see_through.svg" alt="">
+            </picture>
+        </div>
+    </section>
+
+    <section class="intro_section scroll_section" id="home">
+        <div class="section_container">
+            <div class="container">
+                <div class="container_1">
+                    <p class="headding grow_here">Guha Home Stay</p>
+                    <p class="sub_headdng grow_here">.</p>
+                </div>
+                <div class="container_0 grow_here">
+                    <ul>
+                        <li><a class="item mob_hide_item hme" href="#home">Home</a></li>
+                        <li><a class="item mob_hide_item abt" href="#about">About</a></li>
+                        <li><a class="item mob_hide_item fclt" href="#services">Facilities</a></li>
+                        <li><a class="item mob_hide_item glry" href="#gallery">Gallery</a></li>
+                        <li><a class="item mob_hide_item fqs" href="#faq">Faq</a></li>
+                        <li><a class="item mob_hide_item rvw" href="#review">Reviews</a></li>
+                        <li><a class="item mob_hide_item cntct" href="#contact">Contact us</a></li>
+                        <li><a class="item menu" href="#popup"><i class="bi bi-list"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- intro end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- about start -->
+    <section class="about_section scroll_section" id="about">
+        <div class="section_container">
+            <h1 class="secton_headding">What <span class="highlight">we</span> do</h1>
+            <div class="container">
+                <!-- {% if about %}
+                {% if about.thumbnail %} -->
+                <div class="img_holder">
+                    <!-- <img src="media/{{about.thumbnail}}" alt="" class="about_home_svg"> -->
+                    <img src="./img/about_home.svg" alt="" class="about_home_svg">
+                </div>
+                <!-- {% endif %} -->
+                <div class="content_holder">
+                    <!-- {% if about.title %} -->
+                    <!-- <b class="title>{{about.title}}</b> -->
+                    <!-- {% endif %}{{about.content}} -->
+                    <p>
+                        <b class="title">Lorem ipsum </b>
+                    </p>
+                    <p class="feature_content">
+                        dolor sit amet consectetur adipisicing elit. Voluptate excepturi quod amet
+                        repellendus tempore, nulla quibusdam accusamus eaque deleniti vel magni illum nam aut maiores
+                        unde, possimus earum cupiditate quis porro maxime vitae blanditiis, quisquam deserunt. Quam
+                        reiciendis facilis cumque dolorum, ullam non culpa! Saepe inventore blanditiis adipisci veniam
+                        quod.
+                    </p>
+                </div>
+                <!-- {% endif %} -->
+            </div>
+
+        </div>
+    </section>
+    <!-- about end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- facilities start-->
+    <section class="facility_section scroll_section" id="services">
+        <section class="hero">
+            <h1>We Know what <span class="highlight">YOU</span> want.</h1>
+            <p>A calm place for a cool day.</p>
+        </section>
+
+        <section class="services">
+            <h2>Our services</h2>
+            <!-- {% if services %}
+            <div class="card_holder">
+                <div class="sub_holder">
+                    {% for service in services %}
+                        <div class="card">
+                            <img src="media/{{service.thumbnail}}" alt="">
+                            <div class="info">
+                                <h3>{{service.title}}</h3>
+                                <span>{{service.description}}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %} -->
+
+
+            <div class="card_holder">
+                <div class="sub_holder">
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div> -->
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/homestay_6.jpg" alt="">
+                        <div class="info">
+                            <h3>Kitchen</h3>
+                            <span>The taste of mom's recipe</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- facilities end -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- galary start -->
+    <section class="galary_section scroll_section" id="gallery">
+        <div class="item_holder">
+            <div class="fl_item" not_img="1">
+                <div class="headding">
+                    <div>
+                        <h1>Explore the <span class="highlight">beauty</span></h1>
+                        <p>only for you</p>
+                    </div>
+                    <i class="bi bi-chevron-compact-right"></i>
+                </div>
+            </div>
+            <!-- {% if galary %}
+            {% for image in galary %}
+            <div class="item">
+                <img src=" media/{{ image.img }}" alt="" loading="lazy">
+                <div class="headding">
+                    {% if image.title or image.description %}
+                    {% if image.title %}
+                    <h1>{{image.title}}</h1>
+                    {% else %}
+                    <p>{{image.description}}</p>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %} -->
+
+            <div class="item">
+                <img src="./img/room-1.jpg" alt="">
+                <div class="headding">
+                    <h1>Explore the <span class="highlight">beauty</span></h1>
+                    <p>only meant for you</p>
+
+                </div>
+            </div>
+
+
+            <div class="item">
+                <img src="./img/room-1.jpg" alt="">
+                <div class="headding">
+                    <h1>Explore the <span class="highlight">beauty</span></h1>
+                    <p>only meant for you</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/room-1.jpg" alt="">
+                <div class="headding">
+                    <h1>Explore the <span class="highlight">beauty</span></h1>
+                    <p>only meant for you</p>
+                    <p>scroll ></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="./img/room-1.jpg" alt="">
+                <div class="headding">
+                    <h1>Explore the <span class="highlight">beauty</span></h1>
+                    <p>only meant for you</p>
+                    <p>scroll ></p>
+                </div>
+            </div>
+
+            <div class="fl_item" not_img="1">
+                <div class="headding">
+                    <p>Thats it..</p>
+                    <i class="bi bi-chevron-compact-down"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- galary end -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- faq start -->
+    <section class="faq_section scroll_section" id="faq">
+        <div class="container">
+
+            <h1>How can we <span class="highlight">help</span> you?</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="is this couple friendly?">
+                <button>Ask</button>
+            </div>
+
+            <!-- {% if faq %}
+            <div class="options-grid">
+                {% for key, faqs in faq.items %}
+                <div class="option-card">
+                    <img src="media/{{faqs.thumbnail}}" alt="{{key}}_image">
+                    <p>{{key}}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %} -->
+
+            <div class="options-grid">
+                <div class="option-card">
+                    <img src="./img/bill.png" alt="Payment">
+                    <p>Payment</p>
+                </div>
+                <div class="option-card">
+                    <img src="./img/refund.png" alt="Returns & refunds">
+                    <p>Returns & refunds</p>
+                </div>
+                <div class="option-card">
+                    <img src="./img/time-left.png" alt="Guarantees & assurances">
+                    <p>Check-In & Check-Out</p>
+                </div>
+                <div class="option-card">
+                    <img src="./img/booking.png" alt="Guarantees & assurances">
+                    <p>Booking & Availability</p>
+                </div>
+                <div class="option-card">
+                    <img src="./img/bus.png" alt="Guarantees & assurances">
+                    <p>Location & Transportation</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- faq end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- reviews start -->
+    <section class="review_section scroll_section" id="review">
+        <div class="container">
+            <div class="review-header">
+                <h1>What <span class="highlight">people</span> say</h1>
+                <p>Discover what our satisfied customers have to say about their experiences with our
+                    service.
+                </p>
+            </div>
+            <div class="review-cards">
+                <div class="row">
+                    <div class="card">
+                        <img src="./img/user.png" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>Sarah Johnson</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Cupiditate
+                                eaque expedita fugit nulla voluptatibus doloribus necessitatibus natus perspiciatis
+                                nostrum
+                                labore?</p>
+                        </div>
+                    </div>
+                    <!-- {% if review %}
+                    {% for card in review %}
+                    <div class="card">
+                        <img src="{% static 'img/user.png' %}" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>{{card.user_name}}</h3>
+                            <p class="review-content">{{card.content}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %} -->
+
+                    <div class="card">
+                        <img src="./img/user.png" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>Sarah Johnson</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Cupiditate
+                                eaque expedita fugit nulla voluptatibus doloribus necessitatibus natus perspiciatis
+                                nostrum
+                                labore?</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./img/user.png" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>Sarah Johnson</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Cupiditate
+                                eaque expedita fugit nulla voluptatibus doloribus necessitatibus natus perspiciatis
+                                nostrum
+                                labore?</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./img/user.png" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>Sarah Johnson</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Cupiditate
+                                eaque expedita fugit nulla voluptatibus doloribus necessitatibus natus perspiciatis
+                                nostrum
+                                labore?</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./img/user.png" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>Sarah Johnson</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Cupiditate
+                                eaque expedita fugit nulla voluptatibus doloribus necessitatibus natus perspiciatis
+                                nostrum
+                                labore?</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./img/user.png" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>Sarah Johnson</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Cupiditate
+                                eaque expedita fugit nulla voluptatibus doloribus necessitatibus natus perspiciatis
+                                nostrum
+                                labore?</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./img/user.png" alt="Sarah Johnson">
+                        <div class="card-body">
+                            <h3>Sarah Johnson</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Cupiditate
+                                eaque expedita fugit nulla voluptatibus doloribus necessitatibus natus perspiciatis
+                                nostrum
+                                labore?</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./img/user.png" alt="David Patel">
+                        <div class="card-body">
+                            <h3>David Patel</h3>
+                            <p class="review-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
+                                officia, architecto voluptatem labore hic qui id nam ut quam esse?</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- reviews end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- contact start-->
+    <section class="contact_section scroll_section" id="contact">
+        <div class="container">
+            <div class="header">
+                <h1>Feel <span class="highlight">FREE</span> to get in <span class="highlight">TOUCH</span> </h1>
+                <h1 class="mob_h1">Feel <span class="highlight">FREE</span> <br> to get in <span
+                        class="highlight">TOUCH</span> </h1>
+            </div>
+
+            <!-- <div class="phone">
+                <div class="app-grid">
+                    {% if contact %}
+                    {% for app, data in contact.items %}
+                    <div class="app ">
+                        {% if app == "phone" %}
+                        <a href="tel:+{{data.link}}" target="_blank">
+                            {% elif app == "mail"%}
+                            <a href="mailto:{{data.link}}" target="_blank">
+                                {% else %}
+                                <a href="{{data.link}}" target="_blank">
+                                    {% endif %} -->
+            <!-- {% for l in data.sub_contacts %}
+                                    <span>{{l.link}}</span>
+                                    {% endfor %} -->
+            <!-- <img src="media/{{data.icon}}" alt="Mail">
+                                    <p>{{app}}</p>
+                                </a>
+                    </div>
+            {% endfor %}
+            {% endif %}
+                    -->
+
+            <div class="phone">
+                <div class="app-grid">
+                    <div class="app call_app">
+                        <div>
+                            <img src="./img/mobile.png" alt="Mail">
+                            <p>phone</p>
+                        </div>
+                    </div>
+                    <div class="app map_app">
+                        <div>
+                            <img src="./img/google-maps.png" alt="Calendar">
+                            <p>map</p>
+                        </div>
+                    </div>
+                    <div class="app">
+                        <a href="wa.me/+1231231231" target="_blank">
+                            <img src="./img/whatsapp.png" alt="Camera">
+                            <p>whatsapp</p>
+                        </a>
+                    </div>
+                    <div class="app">
+                        <a href="#" target="_blank">
+                            <img src="./img/facebook.png" alt="Maps">
+                            <p>facebook</p>
+                        </a>
+                    </div>
+                    <div class="app">
+                        <a href="#" target="_blank">
+                            <img src="./img/instagram.png" alt="Clock">
+                            <p>instagram</p>
+                        </a>
+                    </div>
+                    <div class="app"><a href="mailto:asdf@gmail.com?subject=Enquiry" target="_blank">
+                            <img src="./img/gmail.png" alt="Clock">
+                            <p>gmail</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <!-- contact end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- footer start -->
+    <footer class="footer_section scroll_section">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <!-- <img src="{% static 'img/sun.png' %}" alt="Untitled UI Logo"> -->
+                <img src="./img/G.png" alt="guha-homestay-logo">
+                <p>guha homestay</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <a href="#home">home</a>
+                    <a href="#about">about us</a>
+                    <a href="#services">facilities</a>
+                    <a href="#">our locations</a>
+                    <a href="#contact">contact us</a>
+                </div>
+                <div class="footer-column">
+                    <a href="#gallery">galary</a>
+                    <a href="#about">about site</a>
+                    <a href="#">social media</a>
+                    <a href="#">mail</a>
+                    <a href="#">map</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>guha homestays</p>
+            <p>a step forward for your day</p>
+            <p>&copy; 2024 guhahospitality.com All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- popup section start -->
+    <div class="popup_data_holder">
+        <div class="nav_data_holder">
+            <div class="nav_holder">
+                <a class="nav_item" href="#home">Home</a>
+                <a class="nav_item" href="#about">About</a>
+                <a class="nav_item" href="#services">Facilities</a>
+                <a class="nav_item" href="#gallery">Gallery</a>
+                <a class="nav_item" href="#faq">Faq</a>
+                <a class="nav_item" href="#review">Reviews</a>
+                <a class="nav_item" href="#contact">Contact us</a>
+            </div>
+        </div>
+
+        <div class="faq_data_holder">
+            <div class="faq_holder">
+                <div class="faq_type_headding">payment</div>
+                <div class="qa">
+                    <strong class="q">question goes here</strong>
+                    <p class="p">answer goes here</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact_call_data_holder">
+            <div class="contact_holder">
+                <div class="icon">
+                    <img src="./img/mobile.png" alt="">
+                </div>
+                <div class="contact_card">
+                    <a href="tel:+1231231231">1231231231</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact_map_data_holder">
+            <div class="contact_holder">
+                <div class="icon">
+                    <img src="./img/google-maps.png" alt="">
+                </div>
+                <div class="contact_card">
+                    <a href="map.com/lksadskdj">property_1</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="popup_section" id="popup">
+        <div class="popup_holder">
+            <!-- conent is inserted here -->
+        </div>
+    </section>
+    <!-- popup section end -->
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- <script src="{% static 'js/index.js' %}"></script> -->
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
