@@ -204,12 +204,14 @@ function intro_func() {
   intro_tl.to(intro_sub_headding, {
     visibility: "visible", ease: "none", text: "A better night for your sleep", delay: .1,
     onStart: () => {
-      if (document.querySelector(".intro_section .container_0 li").hasChildNodes()) {
-        nav_items = gsap.utils.toArray(".intro_section .container_0 a"),
-          nav_items.forEach(element => {
-            document.querySelector(".navigation_section>.section_container>.container").appendChild(element);
-          });
-      }
+      try {
+        if (document.querySelector(".intro_section .container_0 li").hasChildNodes()) {
+          nav_items = gsap.utils.toArray(".intro_section .container_0 a"),
+            nav_items.forEach(element => {
+              document.querySelector(".navigation_section>.section_container>.container").appendChild(element);
+            });
+        }
+      } catch (Exception) { }
     }
   });
   intro_tl.from(".intro_section>.section_container>.container>.container_2", {
@@ -536,7 +538,7 @@ function review_func() {
   // new review submission
   document.getElementById('reviewForm').addEventListener('submit', function (e) {
     e.preventDefault();
-
+    show_loading();
     const userNameInput = document.getElementById('user_name');
     const reviewContentInput = document.getElementById('review_content');
     const user_name = userNameInput.value;
@@ -557,10 +559,11 @@ function review_func() {
       .then(data => {
         const messageDiv = document.getElementById('reviewResponseMessage');
         if (data.message) {
-          messageDiv.innerHTML = `<p style="color: green;">${data.message}</p>`;
+          alert(`${data.message}`)
         } else if (data.error) {
-          messageDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+          alert(`${data.error}`)
         }
+        show_loading(false);
 
         userNameInput.value = '';
         reviewContentInput.value = '';
