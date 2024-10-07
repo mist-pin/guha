@@ -1283,6 +1283,10 @@ section {
         height: 80%;
     }
 
+    .galary_section .item .headding:hover {
+        opacity: 1;
+    }
+
     .galary_section .fl_item:first-child .headding {
         font-size: 1rem;
     }
@@ -1817,9 +1821,10 @@ textarea:active {
     }
 
     .contact_section>.container .phone {
-        width: 100%;
+        overflow: visible;
         height: 100%;
-        background-image: none;
+        width: 100%;
+        /* background-image: none; */
     }
 }
 

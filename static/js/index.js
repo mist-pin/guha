@@ -147,17 +147,13 @@ function intro_func() {
     intro_section = document.getElementsByClassName("intro_section"),
     intro_headding = document.querySelector(".intro_section .container_1 .headding"),
     intro_sub_headding = document.querySelector(".intro_section .container_1 .sub_headdng");
-
   gsap.to(zoom_image, {
     scale: 50,
     ease: "power1.out",
     scrollTrigger: {
       trigger: zoom_section,
       pin: true,
-      snap: {
-        snapTo: [0, 1],
-        delay: 1
-      },
+      snap: [0, 1],
       pinSpacing: false,
       scrub: 1,
       onEnter: () => { update_nav_colors('hme') },
@@ -252,7 +248,8 @@ function intro_func() {
 /* about page start*/
 function about_func() {
   const about_section = document.querySelector(".about_section"),
-    about_headding = document.querySelector(".about_section h1");
+    about_headding = document.querySelector(".about_section h1"),
+    mm = gsap.matchMedia();
 
   gsap.to(about_section, {
     scrollTrigger: {
@@ -275,8 +272,10 @@ function about_func() {
     }
   });
   about_tl.from(".about_section .container", { opacity: 0 });
-  about_tl.from(".about_section .img_holder>img", { scale: .9, yPercent: 20, opacity: .7 }, "<");
-  about_tl.from(".about_section .content_holder", { scale: .9, yPercent: 20, opacity: .3 }, "<");
+  mm.add("(min-width: 800px)", () => {
+    about_tl.from(".about_section .img_holder>img", { scale: .9, yPercent: 20, opacity: .7 }, "<");
+    about_tl.from(".about_section .content_holder", { scale: .9, yPercent: 20, opacity: .3 }, "<");
+  });
 }
 /* about page end*/
 
@@ -292,7 +291,8 @@ function about_func() {
 function facilities_func() {
 
   const facility_section = document.querySelector(".facility_section"),
-    facility_headding = document.querySelector(".facility_section>.hero>h1");
+    facility_headding = document.querySelector(".facility_section>.hero>h1"),
+    mm = gsap.matchMedia();
 
   gsap.to(facility_section, {
     scrollTrigger: {
@@ -316,7 +316,9 @@ function facilities_func() {
 
   facility_tl.from(".facility_section>.hero p", { opacity: 0 });
   facility_tl.from(".facility_section>.services h2", { opacity: 0 }, "<");
-  facility_tl.from(".facility_section>.services .card", { opacity: 0, stagger: .2, yPercent: 20 }, "<");
+  mm.add("(min-width: 800px)", () => {
+    facility_tl.from(".facility_section>.services .card", { opacity: 0, stagger: .2, yPercent: 20 }, "<");
+  });
 
 
 }
@@ -388,7 +390,8 @@ function gallary_func() {
 /*faq page start */
 function faq_func() {
   const faq_section = document.querySelector(".faq_section"),
-    faq_headding = document.querySelector(".faq_section h1");
+    faq_headding = document.querySelector(".faq_section h1"),
+    mm = gsap.matchMedia();
 
   gsap.to(faq_section, {
     scrollTrigger: {
@@ -420,7 +423,9 @@ function faq_func() {
   });
 
   faq_tl.from(".faq_section .search-bar", { opacity: 0 });
-  faq_tl.from(".faq_section>.container .option-card", { opacity: 0, stagger: .2, yPercent: 20 }, "<");
+  mm.add("(min-width: 800px)", () => {
+    faq_tl.from(".faq_section>.container .option-card", { opacity: 0, stagger: .2, yPercent: 20 }, "<");
+  });
 
 
   // to get the faq based on types
@@ -481,13 +486,13 @@ function faq_func() {
     })
       .then(response => response.json())
       .then(data => {
-        show_loading();
         if (data.message) {
           alert(`${data.message}`);
         } else if (data.error) {
           alert(`${data.error}`);
         }
         questionInput.value = '';
+        show_loading(false);
       })
       .catch(error => console.error('Error:', error));
   });
@@ -603,6 +608,19 @@ function contact_func() {
         toggleActions: "play none none, reset",
         snap: 1
       }
+    });
+  });
+
+  mm.add("(max-width: 799px)", () => {
+    document.querySelectorAll('.galary_section .item').forEach(parent => {
+      parent.addEventListener('click', function () {
+        const child = parent.querySelector('.headding');
+        if (child.style.visibility === 'hidden') {
+          child.style.visibility = 'visible';
+        } else {
+          child.style.visibility = 'hidden';
+        }
+      });
     });
   });
 

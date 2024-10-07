@@ -144,7 +144,8 @@ function about_func() {
 function facilities_func() {
 
     const facility_section = document.querySelector(".facility_section"),
-        facility_headding = document.querySelector(".facility_section>.hero>h1");
+        facility_headding = document.querySelector(".facility_section>.hero>h1"),
+        mm = gsap.matchMedia();
 
     gsap.to(facility_section, {
         scrollTrigger: {
@@ -165,8 +166,10 @@ function facilities_func() {
     });
 
     facility_tl.from(".facility_section>.hero p", { opacity: 0 });
-    facility_tl.from(".facility_section>.services h2", { opacity: 0 }, "<");
-    facility_tl.from(".facility_section>.services .card", { opacity: 0, stagger: .2, yPercent: 20 }, "<");
+    mm.add("(min-width: 800px)", () => {
+        facility_tl.from(".facility_section>.services h2", { opacity: 0 }, "<");
+        facility_tl.from(".facility_section>.services .card", { opacity: 0, stagger: .2, yPercent: 20 }, "<");
+    });
 
 
 }
@@ -222,6 +225,19 @@ function gallary_func() {
             })
         });
     });
+    mm.add("(max-width: 799px)", () => {
+        document.querySelectorAll('.galary_section .item').forEach(parent => {
+            parent.addEventListener('click', function () {
+                const child = parent.querySelector('.headding');
+                if (child.style.visibility === 'hidden') {
+                    child.style.visibility = 'visible';
+                } else {
+                    child.style.visibility = 'hidden';
+                }
+            });
+        });
+    });
+
 }
 /* gallary page end*/
 
@@ -249,7 +265,7 @@ function review_func() {
     // new review submission
     document.getElementById('reviewForm').addEventListener('submit', function (e) {
         e.preventDefault();
-
+        show_loading();
         const userNameInput = document.getElementById('user_name');
         const reviewContentInput = document.getElementById('review_content');
         const user_name = userNameInput.value;
@@ -270,10 +286,11 @@ function review_func() {
             .then(data => {
                 const messageDiv = document.getElementById('reviewResponseMessage');
                 if (data.message) {
-                    messageDiv.innerHTML = `<p style="color: green;">${data.message}</p>`;
+                    alert(`${data.message}`)
                 } else if (data.error) {
-                    messageDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+                    alert(`${data.error}`)
                 }
+                show_loading(false);
 
                 userNameInput.value = '';
                 reviewContentInput.value = '';
