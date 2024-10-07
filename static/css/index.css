@@ -1716,6 +1716,7 @@ textarea:active {
 /* contact section start */
 .contact_section {
     background-color: var(--primary-color);
+    overflow: hidden;
 }
 
 .contact_section>.container {
@@ -1723,6 +1724,7 @@ textarea:active {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    overflow: visible   ;
 }
 
 .contact_section>.container h1 {
@@ -1824,7 +1826,7 @@ textarea:active {
         overflow: visible;
         height: 100%;
         width: 100%;
-        /* background-image: none; */
+        background-image: none;
     }
 }
 
