@@ -2,12 +2,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = 'django-insecure-9rktme+aonp+^)ojkgm@d%her5jf)zjbtvtzx*23vkai4c@!^y'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["http://16.171.16.240 :8000",]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -101,4 +100,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
+    "http://16.171.16.240 :8000"
 ]
