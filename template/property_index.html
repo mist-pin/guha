@@ -262,10 +262,10 @@
             {% if galary %}
             {% for media in galary %}
             <div class="item">
-                {% if media.media_type == 'video' %}
-                <video src="/media/{{ media.img }}" controls autoplay muted loading="lazy"></video>
+                {% if media.file_type == 'video' %}
+                <video style="z-index: 100;" src="media/{{ media.img }}" controls autoplay muted loading="lazy"></video>
                 {% else %}
-                <img src="/media/{{ media.img }}" alt="" loading="lazy">
+                <img src="media/{{ media.img }}" alt="" loading="lazy">
                 {% endif %}
                 <div class="headding">
                     {% if media.title %} <h1>{{media.title}}</h1> {% endif %}

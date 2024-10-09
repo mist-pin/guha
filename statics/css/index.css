@@ -1265,8 +1265,8 @@ section {
     transition-delay: 1.5s;
 }
 
-.galary_section .item .headding:hover {
-    opacity: 0;
+.galary_section .item:hover .headding {
+    visibility: collapse;
 }
 
 .galary_section .item img,

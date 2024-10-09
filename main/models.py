@@ -37,11 +37,12 @@ class Reviews(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE, null=True, blank=True)
 
 
-class Galary(models.Model):
+class Gallery(models.Model):
     title = models.TextField(null=True, blank=True)
     img = models.FileField(upload_to="./galary")
     description = models.TextField(null=True, blank=True)
     property = models.ForeignKey(Property, on_delete=models.CASCADE, null=True, blank=True)
+    file_type = models.CharField(max_length=10,choices=[('image', 'Image'), ('video', 'Video')],default='image')
 
 
 class Contact_Thumbnail(models.Model):

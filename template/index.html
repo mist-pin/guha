@@ -13,7 +13,7 @@
     <meta name="author" content="alchemist">
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
 
-    <title>Home | GUHA</title>
+    <title>GUHA</title>
     <style>
         .loading_section {
             background-color: black;
@@ -318,8 +318,8 @@
             {% if galary %}
             {% for media in galary %}
             <div class="item">
-                {% if media.media_type == 'video' %}
-                <video src="media/{{ media.img }}" controls autoplay muted loading="lazy"></video>
+                {% if media.file_type == 'video' %}
+                <video style="z-index: 100;" src="media/{{ media.img }}" controls autoplay muted loading="lazy"></video>
                 {% else %}
                 <img src="media/{{ media.img }}" alt="" loading="lazy">
                 {% endif %}

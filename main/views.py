@@ -24,15 +24,13 @@ def index(request):
     property = Property.objects.all()
 
     # about
-    about = About.objects.filter(property=None)
-    if about:
-        about = about.first()
+    about = About.objects.all().filter(property=None).first()
 
     # services
     services = Services.objects.all()
 
     # gallery
-    galary = Galary.objects.all()
+    galary = Gallery.objects.all()
 
     # FAQ
     # todo: create a table to get the faq section thumbnail images.
@@ -44,7 +42,7 @@ def index(request):
         }
     '''
     faq = {}
-    all_faqs = Faq.objects.filter(approved=True)
+    all_faqs = Faq.objects.all().filter(approved=True)
     groups = Faq_Thumbnail.objects.all()
     for group in groups:
         faq[group.faq_group] = {}
@@ -70,9 +68,6 @@ def index(request):
 
 
     return render(request, "index.html", context= {"about": about, "services": services, "galary": galary, "faq": faq, "review": review, "contact": contact, "phone_map_contact":phone_map_contact, "property":property})
-
-
-
 
 @api_view(['POST'])
 def get_faqs(request):
@@ -139,7 +134,7 @@ def property_page(request, property_id):
     services = Services.objects.filter(property=property)
 
     # Gallery (filter related to the property)
-    galary = Galary.objects.filter(property=property)
+    galary = Gallery.objects.filter(property=property)
 
     # FAQ
     faq = {}
