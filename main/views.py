@@ -24,7 +24,9 @@ def index(request):
     property = Property.objects.all()
 
     # about
-    about = About.objects.filter(property=None)[0]
+    about = About.objects.filter(property=None)
+    if about:
+        about = about.first()
 
     # services
     services = Services.objects.all()

@@ -265,7 +265,7 @@ function review_func() {
     // new review submission
     document.getElementById('reviewForm').addEventListener('submit', function (e) {
         e.preventDefault();
-        show_loading();
+                
         const userNameInput = document.getElementById('user_name');
         const reviewContentInput = document.getElementById('review_content');
         const user_name = userNameInput.value;
