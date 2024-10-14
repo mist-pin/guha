@@ -1,6 +1,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap"); */
 /* @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); */
 
+
 :root {
     --primary-color-50: #00000050;
     --primary-color: #2C3532;
@@ -8,6 +9,10 @@
     --ternary-color: #D8B08C;
     --fourth-color: #FFCB9A;
     --fifth-color: #D2E8E3;
+    --sixth-color: #baaf84;
+    --background-color: linear-gradient(180deg, var(--primary-color), var(--sixth-color));
+    --background-color-invert: linear-gradient(180deg, var(--sixth-color), var(--primary-color));
+    ;
 }
 
 * {
@@ -116,7 +121,6 @@ section {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    border-bottom: 1px solid var(--fourth-color);
 }
 
 .scroll_section {
@@ -391,7 +395,8 @@ section {
     height: fit-content;
     border-width: 0;
     z-index: 100;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background: var(--sixth-color);
 }
 
 .navigation_section::after {
@@ -425,11 +430,13 @@ section {
     z-index: 102;
     color: var(--primary-color);
     font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 1px var(--sixth-color);
 }
 
 .navigation_section>.section_container>.container .hme {
-    color: var(--secondary-color);
-    text-shadow: 1px 1px 1px var(--ternary-color);
+    color: var(--ternary-color);
+    text-shadow: 1px 1px 2px var(--primary-color);
 }
 
 @media screen and (max-width : 700px) {
@@ -714,9 +721,12 @@ section {
     }
 
     .intro_section>.section_container>.container>.container_1>.headding span {
-        font-size: 4rem;
+        font-size: 3rem;
         float: right;
-        margin-right: 10px;
+        margin-top: 15px;
+        margin-right: 40px;
+        line-height: 90%;
+        text-align: right;
     }
 
     .intro_section>.section_container>.container>.container_1>.headding::before {
@@ -824,7 +834,7 @@ section {
 
 /* about start */
 .about_section {
-    background-color: var(--primary-color);
+    background: var(--background-color);
 }
 
 .about_section>.section_container {
@@ -999,7 +1009,7 @@ section {
 /* facility start */
 .facility_section {
     text-align: center;
-    background-color: var(--primary-color);
+    background: var(--background-color);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -1182,7 +1192,7 @@ section {
 /* galary section start*/
 
 .galary_section {
-    background-color: var(--primary-color);
+    background: var(--background-color);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 }
@@ -1344,7 +1354,7 @@ section {
 /* faq section start */
 
 .faq_section {
-    background-color: var(--primary-color);
+    background: var(--background-color);
     /* z-index: -1; */
 }
 
@@ -1423,6 +1433,7 @@ section {
     text-align: center;
     width: 250px;
     box-shadow: 1px 1px 5px var(--ternary-color);
+    background-color: var(--primary-color-50);
 }
 
 .faq_section>.container .option-card img {
@@ -1480,12 +1491,12 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary-color);
+    background: var(--background-color);
     border-top: 1px solid var(--secondary-color);
 }
 
 .review_section>.container {
-    background-color: var(--primary-color);
+    background: var(--background-color);
     padding: 40px;
     border-radius: 15px;
     text-align: center;
@@ -1544,7 +1555,7 @@ section {
 
 
 .review_section>.container .card {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-50);
     border-radius: 15px;
     padding: 30px;
     margin: 10px 0px;
@@ -1565,7 +1576,7 @@ section {
 .review_section>.container .card form input {
     min-height: 10%;
     border-radius: 5px;
-    background-color: var(--primary-color);
+    background: var(--primary-color-50);
     color: var(--fifth-color);
     text-align: center;
     box-shadow: 1px 1px 3px var(--fourth-color);
@@ -1578,7 +1589,7 @@ section {
 .review_section>.container .card form textarea {
     min-height: 50%;
     border-radius: 5px;
-    background-color: var(--primary-color);
+    background: var(--primary-color-50);
     color: var(--fifth-color);
     outline: none;
     transition: none;
@@ -1610,7 +1621,7 @@ textarea:active {
     border-radius: 5px;
     padding: 5px;
     border-width: 0px;
-    background-color: var(--primary-color);
+    background: var(--primary-color-50);
     color: var(--fifth-color);
     box-shadow: 1px 1px 3px var(--fourth-color);
     outline: none;
@@ -1631,7 +1642,6 @@ textarea:active {
     text-decoration: underline 3px solid var(--primary-color-50);
 }
 
-
 .review_section>.container>.review-cards .card .review-content {
     font-size: .9rem;
     margin-top: 10px;
@@ -1643,7 +1653,6 @@ textarea:active {
     height: max-content;
     color: var(--fifth-color);
 }
-
 
 @media (max-width: 767px) {
     .review_section>.container {
@@ -1716,7 +1725,7 @@ textarea:active {
 
 /* contact section start */
 .contact_section {
-    background-color: var(--primary-color);
+    background: var(--background-color);
     overflow: hidden;
 }
 
@@ -1749,10 +1758,10 @@ textarea:active {
 }
 
 .contact_section>.container .phone {
-    /* background-image: url("../img/phone_frame.png"); */
-    background-image: url("/static/img/phone_frame.png");
+    /* background-image: url("../img/iphone_frame.png"); */
+    background-image: url("/static/img/iphone_frame.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     width: 350px;
     height: 700px;
@@ -1810,7 +1819,7 @@ textarea:active {
         justify-content: center;
         align-items: center;
         text-align: right;
-        background-color: var(--primary-color);
+        background: var(--background-color);
     }
 
     .contact_section>.container h1 {
@@ -1848,10 +1857,11 @@ textarea:active {
 /* footer section start */
 .footer_section {
     position: relative;
-    background-color: var(--fifth-color);
+    border-top: 1px solid var(--primary-color-50);
+    background: var(--background-color-invert);
     padding: 40px 20px;
-    color: black;
     z-index: 10;
+    color: white;
 }
 
 .footer_section::before {
@@ -1880,6 +1890,8 @@ textarea:active {
 .footer-logo img {
     width: 40px;
     margin-right: 10px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
 }
 
 .footer-logo p {
@@ -1899,7 +1911,7 @@ textarea:active {
 }
 
 .footer-column a {
-    color: black;
+    color: white;
     text-decoration: none;
     display: block;
     margin-bottom: 10px;
@@ -1914,6 +1926,7 @@ textarea:active {
 .footer-bottom {
     text-align: center;
     margin-top: 40px;
+    color: white;
 }
 
 .footer-bottom p {
@@ -1928,9 +1941,10 @@ textarea:active {
 
 .footer_section .admin_link {
     background-color: var(--primary-color-50);
-    color: var(--primary-color);
+    color: white;
     padding: 5px;
     border-radius: 5px;
+    width: fit-content;
 }
 
 /* footer section end */

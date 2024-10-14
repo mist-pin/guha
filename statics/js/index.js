@@ -36,15 +36,15 @@ function update_nav_colors(active_element, background_color) {
   navLinks.forEach(link => {
     if (link.classList.contains(active_element)) {
       gsap.to(link, {
-        color: "var(--secondary-color)",
-        textShadow: "1px 1px 1px white",
+        color: "var(--ternary-color)",
+        textShadow: "1px 1px 2px var(--primary-color)",
         duration: 0.5
       });
     }
     else {
       gsap.to(link, {
         color: 'var(--primary-color)',
-        textShadow: "0px 0px 0px var(--ternary-color)",
+        textShadow: "1px 1px 1px var(--sixth-color)",
       });
     }
   });
@@ -53,6 +53,7 @@ function update_nav_colors(active_element, background_color) {
     gsap.to(navbar, { backgroundColor: background_color, duration: 1 });
   }
 }
+
 
 
 function popup_func() {
@@ -138,8 +139,6 @@ function link_open_scrollto() {
 
 
 
-
-
 /* intro page start*/
 function intro_func() {
   let zoom_section = document.getElementsByClassName("intro_section_0"),
@@ -147,14 +146,17 @@ function intro_func() {
     intro_section = document.getElementsByClassName("intro_section"),
     intro_headding = document.querySelector(".intro_section .container_1 .headding"),
     intro_sub_headding = document.querySelector(".intro_section .container_1 .sub_headdng");
-
+  gsap.set(intro_headding, { "--before-left": "-120%" });
   gsap.to(zoom_image, {
     scale: 50,
     ease: "power1.out",
     scrollTrigger: {
       trigger: zoom_section,
       pin: true,
-      snap: [0, 1],
+      snap: {
+        snapTo: [0, 2],
+        duration: 3,
+      },
       pinSpacing: false,
       scrub: 1,
       onEnter: () => { update_nav_colors('hme') },
@@ -190,12 +192,6 @@ function intro_func() {
       }
     },
   });
-  intro_tl.fromTo(intro_headding,
-    { "--before-left": "-120%", duration: 2 },
-    {
-      "--before-left": "160%", "--before-width": "100px", "--before-height": "300px", duration: 2,
-      onComplete: () => { gsap.to(intro_headding, { "--before-opacity": "0", duration: 1, delay: 1 }) }
-    });
   intro_tl.to(intro_sub_headding, {
     visibility: "visible", ease: "none", text: "A better night for your sleep", delay: .1,
     onStart: () => {
@@ -207,7 +203,15 @@ function intro_func() {
             });
         }
       } catch (Exception) { }
-    }
+    },
+    onComplete: () => {
+      gsap.fromTo(intro_headding,
+        { "--before-left": "-120%", duration: 2 },
+        {
+          "--before-left": "160%", "--before-width": "100px", "--before-height": "300px", duration: 5, delay: 1,
+          onComplete: () => { gsap.to(intro_headding, { "--before-opacity": "0", duration: 1, delay: 1 }) }
+        });
+    },
   });
   intro_tl.from(".intro_section>.section_container>.container>.container_2", {
     opacity: 0,
@@ -238,13 +242,17 @@ function mob_intro_func() {
     intro_section = document.getElementsByClassName("intro_section"),
     intro_headding = document.querySelector(".intro_section .container_1 .headding"),
     intro_sub_headding = document.querySelector(".intro_section .container_1 .sub_headdng");
+  gsap.set(intro_headding, { "--before-left": "-120%" });
   gsap.to(zoom_image, {
     scale: 50,
     ease: "power1.out",
     scrollTrigger: {
       trigger: zoom_section,
       pin: true,
-      snap: [0, 1],
+      snap: {
+        snapTo: [0, 2],
+        duration: 2.5,
+      },
       pinSpacing: false,
       scrub: 1,
       onEnter: () => { update_nav_colors('hme') },
@@ -286,12 +294,6 @@ function mob_intro_func() {
       }
     },
   });
-  intro_tl.fromTo(intro_headding,
-    { "--before-left": "-120%", duration: 2 },
-    {
-      "--before-left": "160%", "--before-width": "100px", "--before-height": "300px", duration: 2,
-      onComplete: () => { gsap.to(intro_headding, { "--before-opacity": "0", duration: 1, delay: 1 }) }
-    });
   intro_tl.to(intro_sub_headding, {
     visibility: "visible", ease: "none", text: "A better night for your sleep", delay: .1,
     onStart: () => {
@@ -303,7 +305,15 @@ function mob_intro_func() {
             });
         }
       } catch (Exception) { }
-    }
+    },
+    onComplete: () => {
+      gsap.fromTo(intro_headding,
+        { "--before-left": "-120%", duration: 2 },
+        {
+          "--before-left": "160%", "--before-width": "100px", "--before-height": "300px", duration: 2.5, delay: 1,
+          onComplete: () => { gsap.to(intro_headding, { "--before-opacity": "0", duration: 1, delay: 1 }) }
+        });
+    },
   });
   intro_tl.from(".intro_section>.section_container>.container>.container_2", {
     opacity: 0,
@@ -599,11 +609,13 @@ function faq_func() {
 
   // to get the faq based on types
   async function fetch_faqs(faqGroup) {
+    const csrftoken = getCookie('csrftoken');
     try {
       const response = await fetch('/get-faqs/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
         },
         body: JSON.stringify({
           faq_group: faqGroup
@@ -631,7 +643,7 @@ function faq_func() {
         show_popup(`no faqs found`, true)
       }
     } catch (error) {
-      alert("error occured");
+      alert(`error occured ${error}`);
     }
   }
 
@@ -641,7 +653,6 @@ function faq_func() {
     show_loading();
     const questionInput = document.getElementById('question');
     const question = questionInput.value;
-    const csrftoken = getCookie('csrftoken');
 
     fetch('/submit-faq/', {
       method: 'POST',
@@ -718,11 +729,13 @@ function mob_faq_func() {
 
   // to get the faq based on types
   async function fetch_faqs(faqGroup) {
+    const csrftoken = getCookie('csrftoken');
     try {
       const response = await fetch('/get-faqs/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
         },
         body: JSON.stringify({
           faq_group: faqGroup
@@ -760,7 +773,6 @@ function mob_faq_func() {
     show_loading();
     const questionInput = document.getElementById('question');
     const question = questionInput.value;
-    const csrftoken = getCookie('csrftoken');
 
     fetch('/submit-faq/', {
       method: 'POST',

@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-9rktme+aonp+^)ojkgm@d%her5jf)zjbtvtzx*23vkai4c@!^y
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['16.171.16.240', '127.0.0.1' ]
+ALLOWED_HOSTS = ['16.171.16.240', '127.0.0.1', "guhahospitality.com", "www.guhahospitality.com"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -88,6 +88,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
+
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = 'media/'
 

@@ -97,7 +97,7 @@ def submit_faq(request):
             question=question,
             answer="",
             approved=False,
-            group=Faq_Thumbnail.objects.get(faq_group="general"),
+            group=Faq_Thumbnail.objects.all().filter(faq_group="general").first(),
             property=None
         )
         return JsonResponse({'message': 'Query submitted successfully! it will be answered within 24 hours'}, status=200)
