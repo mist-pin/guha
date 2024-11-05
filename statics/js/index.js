@@ -36,15 +36,15 @@ function update_nav_colors(active_element, background_color) {
   navLinks.forEach(link => {
     if (link.classList.contains(active_element)) {
       gsap.to(link, {
-        color: "var(--ternary-color)",
-        textShadow: "1px 1px 2px var(--primary-color)",
+        color: "var(--background-color)",
+        "-webkit-text-stroke": "1px var(--primary-color)",
         duration: 0.5
       });
     }
     else {
       gsap.to(link, {
         color: 'var(--primary-color)',
-        textShadow: "1px 1px 1px var(--sixth-color)",
+        "-webkit-text-stroke": "0px var(--primary-color)",
       });
     }
   });
@@ -220,8 +220,6 @@ function intro_func() {
 
 
   let intro_tl_2 = gsap.timeline({
-    // opacity: 0,
-    // duration: 1,
     scrollTrigger: {
       trigger: ".intro_section .container_1 .headding",
       start: "clamp(top 70%)",
@@ -322,8 +320,6 @@ function mob_intro_func() {
 
 
   let intro_tl_2 = gsap.timeline({
-    // opacity: 0,
-    // duration: 1,
     scrollTrigger: {
       trigger: ".intro_section .container_1 .headding",
       start: "clamp(top 70%)",
@@ -380,19 +376,7 @@ function about_func() {
 }
 
 function mob_about_func() {
-  const about_section = document.querySelector(".about_section"),
-    about_headding = document.querySelector(".about_section h1"),
-    mm = gsap.matchMedia();
-
-  gsap.to(about_section, {
-    scrollTrigger: {
-      trigger: about_section,
-      start: "clamp(top bottom)",
-      end: "clamp(bottom bottom)",
-      snap: [0, 1],
-      onEnter: () => { update_nav_colors('abt') },
-    },
-  });
+  const about_headding = document.querySelector(".about_section h1");
 
   let about_tl = gsap.timeline({
     scrollTrigger: {
@@ -456,18 +440,7 @@ function facilities_func() {
 function mob_facilities_func() {
 
   const facility_section = document.querySelector(".facility_section"),
-    facility_headding = document.querySelector(".facility_section>.hero>h1"),
-    mm = gsap.matchMedia();
-
-  gsap.to(facility_section, {
-    scrollTrigger: {
-      trigger: facility_section,
-      start: "clamp(top bottom)",
-      end: "clamp(bottom bottom)",
-      snap: [0, 1],
-      onEnter: () => { update_nav_colors('fclt') },
-    },
-  });
+    facility_headding = document.querySelector(".facility_section>.hero>h1");
 
   let facility_tl = gsap.timeline({
     scrollTrigger: {
@@ -538,19 +511,7 @@ function gallary_func() {
 
 
 function mob_gallary_func() {
-  const galary_section = document.querySelector(".galary_section"),
-    gal_h1 = document.querySelector(".galary_section .fl_item:first-child .headding");
-
-  gsap.to(galary_section, {
-    scrollTrigger: {
-      trigger: galary_section,
-      start: "clamp(top bottom)",
-      end: "clamp(bottom bottom)",
-      snap: [0, 1],
-      onEnter: () => { update_nav_colors('glry') },
-      onEnterBack: () => { update_nav_colors('glry') },
-    },
-  });
+  const gal_h1 = document.querySelector(".galary_section .fl_item:first-child .headding");
 
   gsap.to(gal_h1, {
     scrollTrigger: {
@@ -626,19 +587,21 @@ function faq_func() {
       }
       const data = await response.json();
       if (data.length > 0) {
+        const dummy_holder = document.createElement('div');
         const faqContainer = document.createElement("div");
-        faqContainer.classList.add("faq_list_holder");
+        faqContainer.classList.add("faq_holder");
         data.forEach(faq => {
           const listItem = document.createElement("div");
           listItem.innerHTML = `
-            <div class="faq_list_item" style="border-bottom:1px solid black; margin-bottom:5px; margin-left:10px; margin-right:10px;">
-              <h3>${faq.question}</h3>
+            <div class="faq_item" style="border-bottom:1px solid black; margin-bottom:5px; margin-left:10px; margin-right:10px;">
+              <h3 class = "faq_type_headding">${faq.question}</h3>
               <p style="width:100%">${faq.answer}</p>
             </div>
           `;
           faqContainer.appendChild(listItem);
+          dummy_holder.appendChild(faqContainer);
         });
-        show_popup(`${faqContainer.innerHTML}`, true);
+        show_popup(`${dummy_holder.innerHTML}`, true);
       } else {
         show_popup(`no faqs found`, true)
       }
@@ -692,24 +655,11 @@ function faq_func() {
 
 function mob_faq_func() {
   const faq_section = document.querySelector(".faq_section"),
-    faq_headding = document.querySelector(".faq_section h1"),
-    mm = gsap.matchMedia();
-
-  gsap.to(faq_section, {
-    scrollTrigger: {
-      trigger: faq_section,
-      start: "clamp(top bottom)",
-      end: "clamp(bottom bottom)",
-      snap: [0, 1],
-      onEnter: () => { update_nav_colors('fqs') },
-    },
-  });
+    faq_headding = document.querySelector(".faq_section h1");
 
   gsap.to(faq_section, {
     opacity: 1,
     scrollTrigger: {
-      // pin: true,
-      // pinSpacing: false,
       trigger: faq_section,
       onEnterBack: () => { update_nav_colors('fqs') },
     }
@@ -746,24 +696,26 @@ function mob_faq_func() {
       }
       const data = await response.json();
       if (data.length > 0) {
+        const dummy_holder = document.createElement('div');
         const faqContainer = document.createElement("div");
-        faqContainer.classList.add("faq_list_holder");
+        faqContainer.classList.add("faq_holder");
         data.forEach(faq => {
           const listItem = document.createElement("div");
           listItem.innerHTML = `
-            <div class="faq_list_item" style="border-bottom:1px solid black; margin-bottom:5px; margin-left:10px; margin-right:10px;">
-              <h3>${faq.question}</h3>
+            <div class="faq_item" style="border-bottom:1px solid black; margin-bottom:5px; margin-left:10px; margin-right:10px;">
+              <h3 class = "faq_type_headding">${faq.question}</h3>
               <p style="width:100%">${faq.answer}</p>
             </div>
           `;
           faqContainer.appendChild(listItem);
+          dummy_holder.appendChild(faqContainer);
         });
-        show_popup(`${faqContainer.innerHTML}`, true);
+        show_popup(`${dummy_holder.innerHTML}`, true);
       } else {
         show_popup(`no faqs found`, true)
       }
     } catch (error) {
-      alert("error occured");
+      alert(`error occured ${error}`);
     }
   }
 
@@ -870,6 +822,45 @@ function review_func() {
   });
 
 }
+
+function mob_review_func() {
+  // new review submission
+  document.getElementById('reviewForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    show_loading();
+    const userNameInput = document.getElementById('user_name');
+    const reviewContentInput = document.getElementById('review_content');
+    const user_name = userNameInput.value;
+    const review_content = reviewContentInput.value;
+    const csrftoken = getCookie('csrftoken');
+    fetch('/submit-review/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrftoken
+      },
+      body: new URLSearchParams({
+        'user_name': user_name,
+        'review_content': review_content
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        const messageDiv = document.getElementById('reviewResponseMessage');
+        if (data.message) {
+          alert(`${data.message}`)
+        } else if (data.error) {
+          alert(`${data.error}`)
+        }
+        show_loading(false);
+
+        userNameInput.value = '';
+        reviewContentInput.value = '';
+      })
+      .catch(error => console.error('Error:', error));
+  });
+
+}
 /* review page end*/
 
 
@@ -914,22 +905,8 @@ function contact_func() {
 }
 
 function mob_contact_func() {
-  const contact_section = document.querySelector(".contact_section"),
-    contact_header = document.querySelector(".contact_section>.container .header ");
+  const contact_header = document.querySelector(".contact_section>.container .header ");
 
-  gsap.to(contact_section, {
-    zIndex: 100,
-    opacity: 1,
-    scrollTrigger: {
-      trigger: contact_section,
-      start: "clamp(top bottom)",
-      end: "clamp(bottom bottom)",
-      snap: [0, 1],
-      onEnter: () => { update_nav_colors('cntct') },
-      onEnterBack: () => { update_nav_colors('rvw') },
-      onLeaveBack: () => { update_nav_colors('rvw') },
-    },
-  });
   gsap.to(contact_header, {
     opacity: 0,
     zIndex: -1,
@@ -1001,6 +978,20 @@ function footer_func() {
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
+  const lenis = new Lenis({
+    smooth: true,
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+  })
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
 
   let mm = gsap.matchMedia();
@@ -1012,6 +1003,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     mob_facilities_func();
     mob_gallary_func();
     mob_faq_func();
+    mob_review_func()
     mob_contact_func();
   });
   mm.add("(min-width: 800px)", () => {
@@ -1019,14 +1011,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
     facilities_func();
     gallary_func();
     faq_func();
+    review_func();
     contact_func();
   });
-  review_func();
   footer_func();
 
   // hide loader
   show_loading(false);
-
+  lenis.on('scroll', ScrollTrigger.update)
 
 });
 

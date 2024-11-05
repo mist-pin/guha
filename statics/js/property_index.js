@@ -115,46 +115,12 @@ function link_open_scrollto() {
 
 
 
-
-/* about page start*/
-function about_func() {
-    const about_section = document.querySelector(".about_section"),
-        about_headding = document.querySelector(".about_section h1");
-
-    gsap.to(about_section, {
-        scrollTrigger: {
-            trigger: about_section,
-            start: "clamp(top bottom)",
-            end: "clamp(bottom bottom)",
-            snap: [0, 1],
-        },
-    });
-}
-/* about page end*/
-
-
-
-
-
-
-
-
-
 /* facilities page start*/
 function facilities_func() {
 
     const facility_section = document.querySelector(".facility_section"),
         facility_headding = document.querySelector(".facility_section>.hero>h1"),
         mm = gsap.matchMedia();
-
-    gsap.to(facility_section, {
-        scrollTrigger: {
-            trigger: facility_section,
-            start: "clamp(top bottom)",
-            end: "clamp(bottom bottom)",
-            snap: [0, 1],
-        },
-    });
 
     let facility_tl = gsap.timeline({
         scrollTrigger: {
@@ -186,16 +152,7 @@ function facilities_func() {
 /* gallary page start*/
 function gallary_func() {
     const galary_section = document.querySelector(".galary_section"),
-        gal_h1 = document.querySelector(".galary_section .fl_item:first-child .headding");
-
-    gsap.to(galary_section, {
-        scrollTrigger: {
-            trigger: galary_section,
-            start: "clamp(top bottom)",
-            end: "clamp(bottom bottom)",
-            snap: [0, 1],
-        },
-    });
+        gal_h1 = document.querySelector(".galary_section .fl_item:first-child .headding")
 
     gsap.to(gal_h1, {
         scrollTrigger: {
@@ -258,14 +215,13 @@ function review_func() {
             trigger: review_section,
             start: "clamp(top bottom)",
             end: "clamp(bottom bottom)",
-            snap: [0, 1],
         },
     });
 
     // new review submission
     document.getElementById('reviewForm').addEventListener('submit', function (e) {
         e.preventDefault();
-                
+
         const userNameInput = document.getElementById('user_name');
         const reviewContentInput = document.getElementById('review_content');
         const user_name = userNameInput.value;
@@ -320,7 +276,6 @@ function contact_func() {
             trigger: contact_section,
             start: "clamp(top bottom)",
             end: "clamp(bottom bottom)",
-            snap: [0, 1],
         },
     });
 
@@ -355,29 +310,6 @@ function contact_func() {
 
 
 
-/* footer page start*/
-function footer_func() {
-    const footer_section = document.querySelector(".footer_section");
-
-    gsap.to(footer_section, {
-        scrollTrigger: {
-            trigger: footer_section,
-            start: "clamp(top bottom)",
-            end: "clamp(bottom bottom)",
-            snap: [0, 1],
-        }
-    });
-}
-/* footer page end*/
-
-
-
-
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
@@ -396,12 +328,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     popup_func();
     link_open_scrollto();
-    about_func();
     facilities_func();
     gallary_func();
     review_func();
     contact_func();
-    footer_func();
 
     // hide loader
     show_loading(false);

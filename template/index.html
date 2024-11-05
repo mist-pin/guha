@@ -16,81 +16,48 @@
     <title>GUHA</title>
     <style>
         .loading_section {
-            background-color: black;
+            background-color: white;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            gap: 100px;
+
             width: 100vw;
             height: 100vh;
             overflow: hidden;
             position: fixed;
-            top: 0%;
-            bottom: 0%;
-            left: 0%;
-            right: 0%;
+            inset: 0;
             z-index: 101;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .loading_section .loader {
-            width: 50px;
-            aspect-ratio: 1;
-            --c: linear-gradient(#bbb 0 0);
-            --m: radial-gradient(farthest-side, #bbb 92%, #0000);
-            background:
-                var(--c), var(--m),
-                var(--c), var(--m),
-                var(--c), var(--m);
-            background-size: 8px 12px, 8px 8px;
-            background-repeat: no-repeat;
-            animation: load_an 1.5s infinite linear alternate;
+        .loading_section img {
+            object-fit: cover;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            animation: rotate 1.5s linear infinite, pulse 1s ease-in-out infinite alternate;
         }
 
-        @keyframes load_an {
-
-            0%,
-            5% {
-                background-position: 0 50%, 0 0, 50% 50%, 50% 0, 100% 50%, 100% 0;
+        @media screen and (max-width : 700px) {
+            .loading_section img {
+                width: 100px;
+                height: 100px;
             }
 
-            16.67% {
-                background-position: 0 50%, 0 calc(50% - 10px), 50% 50%, 50% 0, 100% 50%, 100% 0
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: -5px -5px 20px #002;
             }
 
-            33.33% {
-                background-position: 0 calc(50% + 10px), 0 50%, 50% 50%, 50% 0, 100% 50%, 100% 0
-            }
-
-            50% {
-                background-position: 0 calc(50% + 10px), 0 50%, 50% 50%, 50% calc(50% - 10px), 100% 50%, 100% 0
-            }
-
-            66.67% {
-                background-position: 0 calc(50% + 10px), 0 50%, 50% calc(50% + 10px), 50% 50%, 100% 50%, 100% 0
-            }
-
-            83.33% {
-                background-position: 0 calc(50% + 10px), 0 50%, 50% calc(50% + 10px), 50% 50%, 100% 50%, 100% calc(50% - 10px)
-            }
-
-            95%,
             100% {
-                background-position: 0 calc(50% + 10px), 0 50%, 50% calc(50% + 10px), 50% 50%, 100% calc(50% + 10px), 100% 50%
+                transform: scale(1.1);
+                background-color: #ffe;
+                border: 1px solid #ffe;
+                box-shadow: 5px 5px 20px #002;
             }
-        }
-
-        .loader_text {
-            width: fit-content;
-            font-size: 40px;
-            line-height: 1.5;
-            font-family: system-ui, sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #0000;
-            -webkit-text-stroke: 1px #fff;
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,8 +75,7 @@
 
     <!-- loading section start -->
     <section class="loading_section">
-        <div class="loader"></div>
-        <div class="loader_text">Loading....</div>
+        <img src="{% static 'img/G.png' %}" alt="guha" class="logo">
     </section>
     <!-- loading section end -->
 
@@ -609,7 +575,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis"></script>
     <script src="{% static 'js/index.js' %}"></script>
     <!-- <script src="./js/index.js"></script> -->
 </body>
